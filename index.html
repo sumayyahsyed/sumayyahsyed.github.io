@@ -1,0 +1,273 @@
+<title>Sumayyah Syed PM Projects</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: bold minimal one-pager with alternating dark and light bands: sticky nav, dark hero with big numbers, light project grid with large covers, tool strip, dark contact band. Deliberately single-look (dark/light bands set explicitly). */
+:root{
+  --night:#0E1117; --night-2:#171B24; --night-line:#2A303D; --on-night:#F2F1EC; --on-night-muted:#A3A9B6;
+  --paper:#F3F2EE; --card:#FFFFFF; --ink:#12151C; --muted:#5A6070; --line:#DEDCD5;
+  --blue:#3651D4; --blue-soft:#AFC0FF;
+  --display:"Bricolage Grotesque","Arial Narrow",Arial,sans-serif; --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--night)}
+p{margin:0}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--blue-soft);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.band-night{background:var(--night);color:var(--on-night)}
+.label{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--night);color:var(--on-night);border-bottom:1px solid var(--night-line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:16px}
+.brand{font-family:var(--display);font-weight:700;font-size:19px;text-decoration:none;letter-spacing:-.01em}
+.navlinks{display:flex;gap:6px}
+.navlinks a{text-decoration:none;font-size:15px;padding:6px 12px;border-radius:999px;color:var(--on-night-muted);transition:color .2s,background .2s}
+.navlinks a:hover{color:var(--on-night);background:var(--night-2)}
+
+/* hero */
+.hero .wrap{padding-block:clamp(56px,10vw,120px) clamp(48px,7vw,80px);display:flex;flex-direction:column;gap:28px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(56px,12vw,148px);line-height:.92;letter-spacing:-.035em;margin:0;text-wrap:balance}
+h1 .amp{color:var(--blue-soft);font-weight:500}
+.hero-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:28px}
+.lede{font-size:clamp(18px,2vw,21px);line-height:1.5;color:var(--on-night-muted);max-width:560px}
+.lede b{color:var(--on-night);font-weight:500}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--night-line);transition:transform .2s,background .2s,border-color .2s}
+.pill:hover{transform:translateY(-2px);border-color:var(--on-night-muted)}
+.pill.solid{background:var(--on-night);color:var(--night);border-color:var(--on-night)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--night-line);margin-top:24px}
+.stats div{padding:24px 20px 0 0;display:flex;flex-direction:column;gap:4px;min-width:0}
+.stats strong{font-family:var(--display);font-weight:700;font-size:clamp(36px,5vw,56px);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stats span{font-size:14px;color:var(--on-night-muted);line-height:1.4}
+
+/* work */
+.work .wrap{padding-block:clamp(64px,9vw,112px);display:flex;flex-direction:column;gap:40px}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:-.03em;margin:0}
+.projects{display:flex;flex-direction:column;gap:28px}
+.project{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.25fr 1fr}
+.cover{display:flex;align-items:center;justify-content:center;overflow:hidden;background:#EDF0F5;min-height:100%;padding:clamp(16px,2.5vw,32px)}
+.cover.white{background:#FFFFFF;border-right:1px solid var(--line)}
+.cover img{width:100%;height:auto;max-height:100%;object-fit:contain;object-position:center;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.project:hover .cover img{transform:scale(1.035)}
+.body{padding:clamp(24px,3.5vw,44px);display:flex;flex-direction:column;gap:18px;min-width:0}
+.tag{display:inline-flex;width:fit-content;padding:5px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:var(--muted)}
+h3{font-family:var(--display);font-weight:700;font-size:clamp(26px,3vw,36px);line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.body > p{color:var(--muted);font-size:16px}
+.result{display:flex;align-items:center;gap:16px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.result strong{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;letter-spacing:-.02em;color:var(--blue);white-space:nowrap}
+.result span{font-size:14.5px;line-height:1.45}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.lk{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);font-size:14.5px;font-weight:600;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
+.lk:hover{border-color:var(--ink)}
+.lk.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lk.primary:hover{background:var(--blue);border-color:var(--blue)}
+.arrow{display:inline-block;transition:transform .2s}
+.lk:hover .arrow{transform:translate(2px,-2px)}
+.lk[href$=".html"]:hover .arrow{transform:translateX(3px)}
+
+/* tools strip */
+.tools{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--paper)}
+.track{display:flex;width:max-content;animation:slide 40s linear infinite}
+.track span{font-family:var(--display);font-weight:500;font-size:clamp(22px,3vw,32px);letter-spacing:-.01em;padding:22px 28px;white-space:nowrap;color:var(--ink)}
+.track span::after{content:"✳";color:var(--blue);margin-left:56px;font-size:.7em;vertical-align:middle}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.track{animation:none;flex-wrap:wrap;width:auto}}
+.tools:hover .track{animation-play-state:paused}
+
+/* contact */
+.contact .wrap{padding-block:clamp(64px,9vw,112px) 40px;display:flex;flex-direction:column;gap:28px}
+.contact h2{font-size:clamp(48px,9vw,112px)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid var(--night-line);padding-top:24px;margin-top:40px;font-size:13.5px;color:var(--on-night-muted)}
+
+/* contact form */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center}
+.contact-copy{display:flex;flex-direction:column;gap:24px;min-width:0}
+.contact-copy > p{color:var(--on-night-muted);max-width:560px;font-size:18px}
+.contact-form{background:var(--night-2);border:1px solid var(--night-line);border-radius:24px;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:16px;min-width:0}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:14px;font-weight:500;color:var(--on-night)}
+.opt{color:var(--on-night-muted);font-weight:400}
+.field input,.field textarea{font:inherit;font-size:16px;color:var(--on-night);background:var(--night);border:1px solid var(--night-line);border-radius:12px;padding:12px 14px;width:100%;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--blue-soft);box-shadow:0 0 0 3px rgba(175,192,255,.18)}
+.form-actions{display:flex;flex-wrap:wrap;gap:10px}
+.form-actions .pill{font:inherit;font-size:15px;font-weight:600;cursor:pointer;color:var(--on-night);background:transparent}
+.form-actions .pill.solid{color:var(--night);background:var(--on-night)}
+.form-error{color:#FFB4A8;font-size:14px}
+.pill:focus-visible{outline:2px solid var(--blue-soft);outline-offset:3px}
+@media (max-width:860px){
+  .contact-grid{grid-template-columns:1fr}
+  .project{grid-template-columns:1fr}
+  .cover{min-height:0}
+  .cover.white{border-right:0;border-bottom:1px solid var(--line)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:480px){.navlinks a:not(.keep){display:none}}
+@media (prefers-reduced-motion:reduce){.cover img,.pill,.arrow{transition:none}}
+</style>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">Sumayyah Syed</a>
+    <div class="navlinks"><a href="#work" class="keep">Work</a><a href="#contact" class="keep">Contact</a></div>
+  </div>
+</nav>
+
+<header class="hero band-night" id="top">
+  <div class="wrap">
+    <h1>Numbers <span class="amp">&amp;</span> Nuance</h1>
+    <div class="hero-row">
+      <p class="lede">Two projects that cover the full product cycle: <b>using data to find the problem</b>, deciding what to build, <b>testing it with users</b>, and planning a safe launch.</p>
+      <div class="ctas">
+        <a class="pill solid" href="#work">See the work <span aria-hidden="true">↓</span></a>
+        <a class="pill" href="https://github.com/sumayyahsyed" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="stats">
+      <div><strong>720K</strong><span>app events analyzed in SQL</span></div>
+      <div><strong>8</strong><span>student and staff sessions (interviews and usability tests)</span></div>
+      <div><strong>23</strong><span>UAT cases written for launch</span></div>
+      <div><strong>+8 pts</strong><span>Android onboarding completion in an A/B test (simulated)</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Selected work</h2>
+    </div>
+
+    <div class="projects">
+      <article class="project">
+        <a class="cover" href="case-study.html" aria-label="Open the Clear to Register case study">
+          <img src="img/clear-to-register.png" alt="Four Clear to Register phone screens: Home, the list of holds, an item's next steps, and reminder settings">
+        </a>
+        <div class="body">
+          <span class="tag label">Product management</span>
+          <h3>Clear to Register: showing students what blocks registration</h3>
+          <p>Students often learn about registration holds only when registration fails. I interviewed students and staff, wrote a PRD, designed and tested a clickable prototype, and turned it into a Jira backlog, a UAT plan and a gated release plan.</p>
+          <div class="result"><strong>3 fixes</strong><span>from usability testing, each turned into a design change, a Jira acceptance criterion and a UAT case</span></div>
+          <div class="links">
+            <a class="lk primary" href="case-study.html">Case study <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="lk" href="https://www.figma.com/proto/3SuZq40JWmyGpsQvUzhUu3/Clear-to-Register-%E2%80%93-Wireframes?node-id=1-3&amp;starting-point-node-id=1%3A3" target="_blank" rel="noopener">Prototype <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="lk" href="https://www.figma.com/design/3SuZq40JWmyGpsQvUzhUu3/Clear-to-Register-%E2%80%93-Wireframes" target="_blank" rel="noopener">Design file <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a class="cover white" href="https://public.tableau.com/views/WealthViewAppRetention/ExecutiveOverview" target="_blank" rel="noopener" aria-label="Open the WealthView Tableau dashboard">
+          <img src="img/wealthview.png" alt="WealthView Executive Overview dashboard showing monthly active users down 18.1% and activation falling after the March redesign">
+        </a>
+        <div class="body">
+          <span class="tag label">Product analytics</span>
+          <h3>WealthView: finding and fixing an 18% drop in active users</h3>
+          <p>A fictional wealth-management app lost 18% of its monthly active users in four months, and leadership asked what to fix first. I traced the drop to an onboarding redesign that broke identity verification on Android, ranked fixes with RICE, tested the top one with an A/B test, and recommended a staged rollout with fraud monitoring.</p>
+          <div class="result"><strong>+8 pts</strong><span>Android onboarding completion in the A/B test of a simpler verification flow (simulated results)</span></div>
+          <div class="links">
+            <a class="lk primary" href="https://public.tableau.com/views/WealthViewAppRetention/ExecutiveOverview" target="_blank" rel="noopener">Dashboard <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="lk" href="https://github.com/sumayyahsyed/app-retention-analysis" target="_blank" rel="noopener">Code <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="lk" href="deck.html">Findings deck <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="tools" id="tools" aria-label="Toolkit">
+  <div class="track">
+    <span>SQL</span><span>Python</span><span>Tableau</span><span>Figma</span><span>Jira</span><span>A/B testing</span><span>RICE</span><span>PRDs</span><span>User interviews</span><span>UAT</span>
+    <span aria-hidden="true">SQL</span><span aria-hidden="true">Python</span><span aria-hidden="true">Tableau</span><span aria-hidden="true">Figma</span><span aria-hidden="true">Jira</span><span aria-hidden="true">A/B testing</span><span aria-hidden="true">RICE</span><span aria-hidden="true">PRDs</span><span aria-hidden="true">User interviews</span><span aria-hidden="true">UAT</span>
+  </div>
+</section>
+
+<footer class="contact band-night" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-copy">
+        <h2>Let’s talk.</h2>
+        <p>Have a question about my work, or a problem you’re trying to solve? Drop me a note. I always enjoy a good conversation.</p>
+      </div>
+
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="field">
+          <label for="cf-name">Your name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="cf-email">Your email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="cf-company">Company <span class="opt">(optional)</span></label>
+          <input id="cf-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="cf-msg">Message</label>
+          <textarea id="cf-msg" name="message" rows="5" required></textarea>
+        </div>
+        <p class="form-error" id="cf-error" role="alert" hidden></p>
+        <div class="form-actions">
+          <button type="submit" class="pill solid">Write the email <span aria-hidden="true">↗</span></button>
+          <button type="button" class="pill" id="cf-copy">Copy message</button>
+        </div>
+      </form>
+    </div>
+    <div class="foot">
+      <span>© 2026 Sumayyah Syed</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var TO = 'syedsumma@gmail.com';
+  var form = document.getElementById('contact-form');
+  var err = document.getElementById('cf-error');
+  function val(id){ return document.getElementById(id).value.trim(); }
+  function compose(){
+    var name = val('cf-name'), email = val('cf-email'), co = val('cf-company'), msg = val('cf-msg');
+    return {
+      subject: 'Hello from ' + (name || 'your portfolio') + (co ? ' (' + co + ')' : ''),
+      body: msg + '\n\n' + name + (co ? '\n' + co : '') + '\n' + email
+    };
+  }
+  function check(){
+    var missing = [];
+    if (!val('cf-name')) missing.push('your name');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val('cf-email'))) missing.push('a valid email');
+    if (!val('cf-msg')) missing.push('a message');
+    if (missing.length){ err.textContent = 'Please add ' + (missing.length > 1 ? missing.slice(0, -1).join(', ') + ' and ' + missing[missing.length - 1] : missing[0]) + '.'; err.hidden = false; return false; }
+    err.hidden = true; return true;
+  }
+  function copyText(text, btn, label){
+    function done(ok){ btn.textContent = ok ? 'Copied' : 'Select and copy it manually'; setTimeout(function(){ btn.textContent = label; }, 2200); }
+    try { navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); }); }
+    catch (e) { done(false); }
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!check()) return;
+    var c = compose();
+    var a = document.createElement('a');
+    a.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(c.subject) + '&body=' + encodeURIComponent(c.body);
+    a.target = '_blank'; a.rel = 'noopener';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  var cb = document.getElementById('cf-copy');
+  cb.addEventListener('click', function(){
+    if (!check()) return;
+    var c = compose();
+    copyText('To: ' + TO + '\nSubject: ' + c.subject + '\n\n' + c.body, cb, 'Copy message');
+  });
+})();
+</script>

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>WealthView Findings Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Source+Serif+4:wght@400..700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: dark site bar on top, a 1920x1080 slide stage scaled to fit the window, and a control bar below. Slides keep the deck's own styling. */
+:root{--night:#0E1117;--night-2:#171B24;--night-line:#2A303D;--on-night:#F2F1EC;--on-night-muted:#A3A9B6;--display:"Bricolage Grotesque","Arial Narrow",Arial,sans-serif;--body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--night);color:var(--on-night);font-family:var(--body);display:flex;flex-direction:column}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--night)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px max(20px,env(safe-area-inset-right,0px)) 14px max(20px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--night-line)}
+.bar a{color:inherit;text-decoration:none}
+.brand{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em}
+.back{font-size:15px;padding:6px 12px;border-radius:999px;color:var(--on-night-muted)!important}
+.back:hover{color:var(--on-night)!important;background:var(--night-2)}
+.viewport{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));overflow:hidden}
+.stage{width:1920px;height:1080px;position:relative;transform-origin:center center;flex:none;box-shadow:0 20px 60px rgba(0,0,0,.45);border-radius:6px;overflow:hidden;cursor:pointer}
+.slide[hidden]{display:none!important}
+.slide{position:absolute;inset:0;width:1920px;height:1080px;box-sizing:border-box}
+.slide p,.slide h1,.slide h2,.slide h3{margin:0}
+.slide table{border-collapse:collapse;width:100%}
+.slide th{font-size:24px;font-weight:600;color:#6A7179;padding:14px 12px;border-bottom:2px solid #14213D}
+.slide td{padding:16px 12px;border-bottom:1px solid #D5DCE5}
+.slide a{color:inherit}
+.controls{display:flex;justify-content:center;align-items:center;gap:16px;padding:12px max(20px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
+.controls button{font:inherit;font-weight:600;font-size:15px;color:var(--on-night);background:transparent;border:1px solid var(--night-line);border-radius:999px;padding:9px 18px;cursor:pointer}
+.controls button:hover:not(:disabled){border-color:var(--on-night-muted)}
+.controls button:disabled{opacity:.4;cursor:default}
+.controls button:focus-visible,.bar a:focus-visible{outline:2px solid #AFC0FF;outline-offset:3px}
+.count{font-variant-numeric:tabular-nums;color:var(--on-night-muted);font-size:14px;min-width:64px;text-align:center}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="index.html">Sumayyah Syed</a>
+  <a class="back" href="index.html#work">← All work</a>
+</header>
+<main class="viewport" id="viewport">
+  <div class="stage" id="stage" aria-roledescription="carousel" aria-label="WealthView findings deck">
+<section class="slide" aria-roledescription="slide" aria-label="Slide 1 of 10" id="cover" data-transition="fade" style="background:#14213D;color:#F7F6F3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<p style="font-size:28px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#9CC3E6">WealthView · App retention analysis</p>
+<h1 style="font-family:'Source Serif 4', Georgia, serif;font-size:96px;font-weight:600;line-height:1.08;width:1500px">Fixing Android identity verification can recover WealthView’s lost growth</h1>
+<p style="font-size:32px;line-height:1.4;color:#C9D3E0;width:1300px">MAU fell 18% after the March onboarding redesign. The cause is a broken verification step, not the app itself.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#9AA8BC">Sumayyah Syed · October 2026 · Synthetic data, Sep 2025 – Jul 2026</p>
+</section>
+<section hidden class="slide" aria-roledescription="slide" aria-label="Slide 2 of 10" id="problem" data-transition="fade" style="background:#F7F6F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.1">Monthly active users are down 18% since the March redesign</h2>
+<div style="display:flex;gap:80px;align-items:end;flex:1">
+<div style="display:flex;flex-direction:column;gap:32px;width:420px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:24px;color:#4A5568">March 2026 (peak)</p>
+<p style="font-size:96px;font-weight:600;line-height:1;color:#8A817C">7,871</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px">
+<p style="font-size:24px;color:#4A5568">July 2026</p>
+<p style="font-size:96px;font-weight:600;line-height:1;color:#2B5783">6,447</p>
+</div>
+<p style="font-size:32px;font-weight:600;color:#14213D">−18.1% in four months</p>
+</div>
+<div style="flex:1;display:flex;gap:28px;align-items:end;height:520px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;align-items:center"><p style="font-size:24px;color:#4A5568">7,583</p><div style="width:100%;height:385px;background:#B9B0AB;border-radius:6px 6px 0 0"></div><p style="font-size:24px;color:#4A5568">Jan</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;align-items:center"><p style="font-size:24px;color:#4A5568">7,291</p><div style="width:100%;height:370px;background:#B9B0AB;border-radius:6px 6px 0 0"></div><p style="font-size:24px;color:#4A5568">Feb</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;align-items:center"><p style="font-size:24px;font-weight:600;color:#14213D">7,871</p><div style="width:100%;height:400px;background:#B9B0AB;border-radius:6px 6px 0 0"></div><p style="font-size:24px;font-weight:600;color:#14213D">Mar</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;align-items:center"><p style="font-size:24px;color:#4A5568">7,512</p><div style="width:100%;height:382px;background:#2B5783;border-radius:6px 6px 0 0"></div><p style="font-size:24px;color:#4A5568">Apr</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;align-items:center"><p style="font-size:24px;color:#4A5568">7,135</p><div style="width:100%;height:362px;background:#2B5783;border-radius:6px 6px 0 0"></div><p style="font-size:24px;color:#4A5568">May</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;align-items:center"><p style="font-size:24px;color:#4A5568">6,594</p><div style="width:100%;height:335px;background:#2B5783;border-radius:6px 6px 0 0"></div><p style="font-size:24px;color:#4A5568">Jun</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;align-items:center"><p style="font-size:24px;font-weight:600;color:#2B5783">6,447</p><div style="width:100%;height:327px;background:#2B5783;border-radius:6px 6px 0 0"></div><p style="font-size:24px;font-weight:600;color:#2B5783">Jul</p></div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7179">Monthly active users, 2026. Gray = before the Mar 15 redesign, blue = after. Source: sql/07_active_users_trend.sql · 2</p>
+</section>
+<section hidden class="slide" aria-roledescription="slide" aria-label="Slide 3 of 10" id="funnel" data-transition="fade" style="background:#F7F6F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.1">Identity verification is the biggest leak in onboarding</h2>
+<div style="display:flex;gap:80px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:22px;justify-content:center">
+<div style="display:flex;gap:24px;align-items:center"><p style="font-size:28px;width:340px;color:#4A5568">1. App opened</p><div style="width:640px;height:64px;background:#B9B0AB;border-radius:6px"></div><p style="font-size:28px;color:#4A5568">44,307</p></div>
+<div style="display:flex;gap:24px;align-items:center"><p style="font-size:28px;width:340px;color:#4A5568">2. Account created</p><div style="width:552px;height:64px;background:#B9B0AB;border-radius:6px"></div><p style="font-size:28px;color:#4A5568">38,186</p></div>
+<div style="display:flex;gap:24px;align-items:center"><p style="font-size:28px;width:340px;font-weight:600;color:#14213D">3. Identity verified</p><div style="width:412px;height:64px;background:#2B5783;border-radius:6px"></div><p style="font-size:28px;font-weight:600;color:#2B5783">28,504</p></div>
+<div style="display:flex;gap:24px;align-items:center"><p style="font-size:28px;width:340px;color:#4A5568">4. Bank linked</p><div style="width:334px;height:64px;background:#B9B0AB;border-radius:6px"></div><p style="font-size:28px;color:#4A5568">23,090</p></div>
+<div style="display:flex;gap:24px;align-items:center"><p style="font-size:28px;width:340px;color:#4A5568">5. Onboarding done</p><div style="width:318px;height:64px;background:#B9B0AB;border-radius:6px"></div><p style="font-size:28px;color:#4A5568">21,994</p></div>
+</div>
+<div style="width:440px;display:flex;flex-direction:column;justify-content:center;gap:16px;background:#EEF1F5;padding:48px;border-radius:16px">
+<p style="font-size:96px;font-weight:600;line-height:1;color:#2B5783;white-space:nowrap">9,682</p>
+<p style="font-size:32px;line-height:1.35;color:#14213D">users quit at verification: <b>1 in 4</b> of everyone who created an account</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7179">All users, Sep 2025 – Jul 2026. Source: sql/03_onboarding_funnel.sql · 3</p>
+</section>
+<section hidden class="slide" aria-roledescription="slide" aria-label="Slide 4 of 10" id="android" data-transition="fade" style="background:#F7F6F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.1">The redesign cut Android verification from 79% to 54%</h2>
+<div style="display:flex;gap:96px;flex:1">
+<div style="flex:1;display:flex;gap:96px;align-items:end">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;gap:32px;align-items:end;height:440px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;align-items:center"><p style="font-size:32px;color:#4A5568">78.6%</p><div style="width:100%;height:346px;background:#B9B0AB;border-radius:6px 6px 0 0"></div></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;align-items:center"><p style="font-size:32px;font-weight:600;color:#2B5783">54.2%</p><div style="width:100%;height:238px;background:#2B5783;border-radius:6px 6px 0 0"></div></div>
+</div>
+<div style="display:flex;gap:32px"><p style="flex:1;font-size:24px;text-align:center;color:#4A5568">Before</p><p style="flex:1;font-size:24px;text-align:center;color:#4A5568">After</p></div>
+<p style="font-size:36px;font-weight:600;text-align:center">Android <span style="color:#2B5783">−24 pts</span></p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;gap:32px;align-items:end;height:440px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;align-items:center"><p style="font-size:32px;color:#4A5568">81.9%</p><div style="width:100%;height:360px;background:#B9B0AB;border-radius:6px 6px 0 0"></div></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;align-items:center"><p style="font-size:32px;font-weight:600;color:#2B5783">74.1%</p><div style="width:100%;height:326px;background:#2B5783;border-radius:6px 6px 0 0"></div></div>
+</div>
+<div style="display:flex;gap:32px"><p style="flex:1;font-size:24px;text-align:center;color:#4A5568">Before</p><p style="flex:1;font-size:24px;text-align:center;color:#4A5568">After</p></div>
+<p style="font-size:36px;font-weight:600;text-align:center">iOS <span style="color:#4A5568">−8 pts</span></p>
+</div>
+</div>
+<div style="width:440px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<p style="font-size:32px;line-height:1.4;color:#14213D">Activation fell from <b>54% to 43%</b> the week the redesign launched on March 15.</p>
+<p style="font-size:32px;line-height:1.4;color:#14213D">The drop is three times larger on Android, pointing to a <b>platform-specific problem</b> in the new verification flow.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7179">Verification pass rate among users who created an account. Before = signups before Mar 15, 2026. Source: sql/04 · 4</p>
+</section>
+<section hidden class="slide" aria-roledescription="slide" aria-label="Slide 5 of 10" id="retention" data-transition="fade" style="background:#14213D;color:#F7F6F3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:64px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.1;color:#F7F6F3">Users who get in stay just as long as before</h2>
+<div style="display:flex;gap:48px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px;background:#1E2F52;padding:56px;border-radius:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#9CC3E6">Getting in</p>
+<p style="font-size:32px;color:#C9D3E0">Activation rate (finished onboarding)</p>
+<p style="font-size:96px;font-weight:600;line-height:1;color:#F7F6F3">54% → 43%</p>
+<p style="font-size:32px;color:#F2B880;font-weight:600">Down 10 points after the redesign</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:24px;background:#1E2F52;padding:56px;border-radius:16px">
+<p style="font-size:28px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#9CC3E6">Staying</p>
+<p style="font-size:32px;color:#C9D3E0">Day 30 retention of activated users</p>
+<p style="font-size:96px;font-weight:600;line-height:1;color:#F7F6F3">8.1% → 8.2%</p>
+<p style="font-size:32px;color:#9CC3E6;font-weight:600">No change after the redesign</p>
+</div>
+</div>
+<p style="font-size:36px;line-height:1.35;color:#F7F6F3">The app still keeps the people it gets. <b>The problem is the front door, not the product.</b></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#9AA8BC">Weekly signup cohorts, Jan – Jul 2026 (D30 only where 30 days of data exist). Source: sql/05_retention_cohorts.sql · 5</p>
+</section>
+<section hidden class="slide" aria-roledescription="slide" aria-label="Slide 6 of 10" id="aha" data-transition="fade" style="background:#EEF1F5;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.1">Messaging an advisor in week 1 goes with 2.5× better retention</h2>
+<div style="display:flex;gap:96px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px;justify-content:center">
+<p style="font-size:28px;color:#4A5568">Day 30 retention, among users active in week 1</p>
+<div style="display:flex;gap:24px;align-items:center"><p style="font-size:28px;width:320px;font-weight:600">Messaged advisor</p><div style="width:620px;height:56px;background:#2B5783;border-radius:6px"></div><p style="font-size:28px;font-weight:600;color:#2B5783">17.6%</p></div>
+<div style="display:flex;gap:24px;align-items:center"><p style="font-size:28px;width:320px;color:#4A5568">Did not</p><div style="width:247px;height:56px;background:#B9B0AB;border-radius:6px"></div><p style="font-size:28px;color:#4A5568">7.0%</p></div>
+<div style="height:16px"></div>
+<p style="font-size:28px;color:#4A5568">Other features: users who used them retain 1.6–1.8× better</p>
+</div>
+<div style="width:460px;display:flex;flex-direction:column;justify-content:center;gap:16px;background:#F7F6F3;padding:48px;border-radius:16px">
+<p style="font-size:120px;font-weight:600;line-height:1;color:#2B5783">22%</p>
+<p style="font-size:32px;line-height:1.35">of new users message their advisor in week 1, the least-used feature with the strongest link to retention</p>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#4A5568">Correlation, not proof: committed clients may simply message more. <b style="color:#14213D">Next step is an A/B test of a week-1 advisor nudge.</b></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7179">Activated users with 30+ days of data who returned in days 1–7. Source: sql/08, sql/09 · 6</p>
+</section>
+<section hidden class="slide" aria-roledescription="slide" aria-label="Slide 7 of 10" id="rice" data-transition="fade" style="background:#F7F6F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.1">Fixing verification ranks first by a wide margin</h2>
+<table style="font-family:'IBM Plex Sans', Arial, sans-serif;font-size:28px;color:#14213D">
+<tr><th style="width:6%;text-align:left">#</th><th style="width:44%;text-align:left">Improvement</th><th style="width:11%;text-align:right">Reach</th><th style="width:10%;text-align:right">Impact</th><th style="width:11%;text-align:right">Confid.</th><th style="width:9%;text-align:right">Effort</th><th style="width:9%;text-align:right">RICE</th></tr>
+<tr style="background:#DCE6F1"><td><b>1</b></td><td><b>Simplify identity verification (Android first)</b></td><td style="text-align:right">9,000</td><td style="text-align:right">3</td><td style="text-align:right">80%</td><td style="text-align:right">6</td><td style="text-align:right"><b>3,600</b></td></tr>
+<tr><td>2</td><td>“Finish verifying” reminder</td><td style="text-align:right">3,100</td><td style="text-align:right">1</td><td style="text-align:right">60%</td><td style="text-align:right">1</td><td style="text-align:right">1,860</td></tr>
+<tr><td>3</td><td>Week-1 advisor messaging nudge</td><td style="text-align:right">4,500</td><td style="text-align:right">2</td><td style="text-align:right">50%</td><td style="text-align:right">3</td><td style="text-align:right">1,500</td></tr>
+<tr><td>4</td><td>Shift spend from paid social to referrals</td><td style="text-align:right">2,600</td><td style="text-align:right">1</td><td style="text-align:right">70%</td><td style="text-align:right">2</td><td style="text-align:right">910</td></tr>
+<tr><td>5</td><td>“Link a bank account later” option</td><td style="text-align:right">5,900</td><td style="text-align:right">1</td><td style="text-align:right">50%</td><td style="text-align:right">4</td><td style="text-align:right">738</td></tr>
+<tr><td>6</td><td>Personalized insights feed</td><td style="text-align:right">4,500</td><td style="text-align:right">0.5</td><td style="text-align:right">30%</td><td style="text-align:right">5</td><td style="text-align:right">135</td></tr>
+</table>
+<p style="font-size:28px;line-height:1.4;color:#4A5568">RICE = Reach × Impact × Confidence ÷ Effort. Reach = users per quarter (from the data); effort in person-weeks (estimated). The reminder ranks high only because it’s cheap, and its reach shrinks once #1 ships.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7179">Full scoring rationale: docs/rice_prioritization.md · 7</p>
+</section>
+<section hidden class="slide" aria-roledescription="slide" aria-label="Slide 8 of 10" id="abtest" data-transition="fade" style="background:#F7F6F3;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.1">A simpler verification flow lifted Android completion 8 points</h2>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#EEF1F5;padding:40px;border-radius:16px">
+<p style="font-size:24px;color:#4A5568">Onboarding completion, all</p>
+<p style="font-size:56px;font-weight:600;line-height:1;color:#2B5783">+4.0 pts</p>
+<p style="font-size:24px;color:#4A5568">43.5% → 47.5% · p = 0.026</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#2B5783;padding:40px;border-radius:16px">
+<p style="font-size:24px;color:#DCE6F1">Onboarding completion, Android</p>
+<p style="font-size:56px;font-weight:600;line-height:1;color:#F7F6F3">+8.1 pts</p>
+<p style="font-size:24px;color:#DCE6F1">37.0% → 45.1% · p = 0.002</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#EEF1F5;padding:40px;border-radius:16px">
+<p style="font-size:24px;color:#4A5568">Support tickets (guardrail)</p>
+<p style="font-size:56px;font-weight:600;line-height:1;color:#2B5783">−32%</p>
+<p style="font-size:24px;color:#4A5568">6.0% → 4.1% · improved</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FBEBDD;padding:40px;border-radius:16px">
+<p style="font-size:24px;color:#7A3E0E">Fraud flags (guardrail)</p>
+<p style="font-size:56px;font-weight:600;line-height:1;color:#9A4A0F">Watch</p>
+<p style="font-size:24px;color:#7A3E0E">0.15% → 0.79% · p = 0.08</p>
+</div>
+</div>
+<div style="display:flex;gap:64px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:32px;font-weight:600">The test</h3>
+<p style="font-size:28px;line-height:1.4;color:#4A5568">4 screens → 2, auto-capture of ID, clearer errors. Same KYC checks. 50/50 split of new users, 1,546 per group, 4 full weeks.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:32px;font-weight:600">The caveat</h3>
+<p style="font-size:28px;line-height:1.4;color:#4A5568">The fraud rise isn’t significant, but it rests on about 1 vs 6 flagged users. Too few to call it safe, so roll out in stages.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7179">Simulated experiment results. Plan and full results: docs/ab_test_proposal.md · 8</p>
+</section>
+<section hidden class="slide" aria-roledescription="slide" aria-label="Slide 9 of 10" id="recommend" data-transition="fade" style="background:#14213D;color:#F7F6F3;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.1;color:#F7F6F3">Recommendation: ship the new flow in stages, then test the advisor nudge</h2>
+<div style="display:flex;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#1E2F52;padding:40px;border-radius:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#9CC3E6">Weeks 1–2</p>
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#F7F6F3">Roll out to all Android, half of iOS</h3>
+<p style="font-size:28px;line-height:1.4;color:#C9D3E0">Biggest gain where the redesign hurt most.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#1E2F52;padding:40px;border-radius:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#9CC3E6">Ongoing</p>
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#F7F6F3">Monitor fraud weekly with risk</h3>
+<p style="font-size:28px;line-height:1.4;color:#C9D3E0">Alert if flags pass 0.5% of completed onboardings.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#1E2F52;padding:40px;border-radius:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#9CC3E6">Week 3+</p>
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#F7F6F3">Full rollout, then the next test</h3>
+<p style="font-size:28px;line-height:1.4;color:#C9D3E0">A/B test the week-1 advisor nudge to see if the link is causal.</p>
+</div>
+</div>
+<div style="display:flex;gap:24px;align-items:center">
+<p style="font-size:96px;font-weight:600;line-height:1;color:#9CC3E6">~420</p>
+<p style="font-size:32px;line-height:1.35;color:#F7F6F3;width:1100px">more activated users per quarter from a 4-point lift, recovering about 40% of what the redesign lost. Verification still has room to improve.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#9AA8BC">Based on ~10,500 new installs per quarter · 9</p>
+</section>
+<section hidden class="slide" aria-roledescription="slide" aria-label="Slide 10 of 10" id="dashboard" data-transition="fade" style="background:#EEF1F5;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.1">Appendix: the dashboards that track these KPIs</h2>
+<div style="display:flex;gap:48px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<img src="img/deck/executive-overview.png" alt="Executive Overview dashboard: MAU, activation, funnel and verification by platform" style="width:808px;height:560px;object-fit:contain;background:#FBFBF8;border-radius:12px;border:1px solid #D5DCE5">
+<p style="font-size:28px;font-weight:600">Executive Overview</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<img src="img/deck/retention-deep-dive.png" alt="Retention Deep Dive dashboard: retention heatmaps, segments, aha moment and feature adoption" style="width:808px;height:560px;object-fit:contain;background:#FBFBF8;border-radius:12px;border:1px solid #D5DCE5">
+<p style="font-size:28px;font-weight:600">Retention Deep Dive</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7179">Interactive version: <a href="https://public.tableau.com/views/WealthViewAppRetention/ExecutiveOverview" target="_blank" rel="noopener">public.tableau.com/views/WealthViewAppRetention</a> · SQL and code: <a href="https://github.com/sumayyahsyed/app-retention-analysis" target="_blank" rel="noopener">github.com/sumayyahsyed/app-retention-analysis</a> · 10</p>
+</section>
+  </div>
+</main>
+<nav class="controls" aria-label="Slide controls">
+  <button type="button" id="prev">← Previous</button>
+  <span class="count" id="count" aria-live="polite">1 / 10</span>
+  <button type="button" id="next">Next →</button>
+</nav>
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage = document.getElementById('stage'), vp = document.getElementById('viewport');
+  var prev = document.getElementById('prev'), next = document.getElementById('next'), count = document.getElementById('count');
+  var i = 0;
+  var m = /^#slide-(\d+)$/.exec(location.hash || '');
+  if (m) i = Math.min(Math.max(parseInt(m[1], 10) - 1, 0), slides.length - 1);
+  function fit(){
+    var w = vp.clientWidth - 32, h = vp.clientHeight - 32;
+    var k = Math.min(w / 1920, h / 1080);
+    stage.style.transform = 'scale(' + Math.max(k, 0.05) + ')';
+    stage.style.margin = (-(1080 - 1080 * k) / 2) + 'px ' + (-(1920 - 1920 * k) / 2) + 'px';
+  }
+  function show(n){
+    i = Math.min(Math.max(n, 0), slides.length - 1);
+    slides.forEach(function(s, k){ s.hidden = k !== i; });
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    prev.disabled = i === 0; next.disabled = i === slides.length - 1;
+  }
+  prev.addEventListener('click', function(){ show(i - 1); });
+  next.addEventListener('click', function(){ show(i + 1); });
+  stage.addEventListener('click', function(e){
+    if (e.target.closest('a')) return;
+    var r = stage.getBoundingClientRect();
+    show(e.clientX < r.left + r.width / 3 ? i - 1 : i + 1);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); show(i + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+  });
+  window.addEventListener('resize', fit);
+  fit(); show(i);
+})();
+</script>
+</body>
+</html>
